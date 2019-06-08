@@ -1,11 +1,33 @@
-@-webkit-keyframes hue {
-  from {
-    -webkit-filter: hue-rotate(0deg);
-  }
-  
-  to {
-    -webkit-filter: hue-rotate(360deg);
-  }
+/* appear - on page load */
+.fade-appear {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear.fade-appear-active {
+opacity: 1;
+transition: opacity 1000ms linear;
+}
+
+/* enter */
+.fade-enter {
+opacity: 0;
+z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 5000ms linear 5000ms;
+}
+
+/* exit */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 5000ms linear;
+}
+.fade-exit-done {
+opacity: 0;
 }
 
 h1 {
@@ -52,5 +74,15 @@ h1 {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  
+  to {
+    -webkit-filter: hue-rotate(360deg);
   }
 }
