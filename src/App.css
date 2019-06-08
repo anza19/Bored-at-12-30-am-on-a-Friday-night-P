@@ -1,3 +1,21 @@
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  
+  to {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
+
+h1 {
+  color: #f35626;
+  background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 1s infinite linear;
+}
+
 .App {
   text-align: center;
 }
@@ -9,8 +27,8 @@
 }
 
 .image-resize {
-  max-width: 100%;
-  height: auto;
+  width: 960px;
+  height: 1280px;
 }
 
 .App-header {
