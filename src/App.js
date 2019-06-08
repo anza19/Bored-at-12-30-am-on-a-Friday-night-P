@@ -52,8 +52,9 @@ class App extends React.Component{
     return(
       <div>
         <img src={this.state.imgList[this.state.index]} alt=""/> <br/>
-        <button onClick={this.forwardClick}>FORWARD</button>
         <button onClick={this.backwardClick}>BACKWARD</button>
+        <button onClick={this.forwardClick}>FORWARD</button>
+
       </div>
     )
   }
