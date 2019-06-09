@@ -64,9 +64,11 @@ class App extends React.Component{
           <button onClick={this.toggleAppear}>APPEAR</button>
           <CSSTransitionGroup
           transitionName="example"
-          transitionEnterTimeout={5000}
-          transitionLeaveTimeout={3000}
-          >            
+          transitionAppear={true}
+          transitionAppearTimeout={500}
+          transitionEnter={false}
+          transitionLeave={false}
+          >                      
           <button onClick={this.backwardClick}>BACKWARD</button>
           <button onClick={this.forwardClick}>FORWARD</button>
         </CSSTransitionGroup>
