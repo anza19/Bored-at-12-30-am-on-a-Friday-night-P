@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import {CSSTransitionGroup} from 'react-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group'
+
 
 //Reference taken from  @https://medium.com/@gianpaul.r/rendering-new-images-onclick-in-react-7cf0fee2184f
 
@@ -29,8 +30,9 @@ class App extends React.Component{
 
   //In order to perform transitions, I  need a toggle function
   toggleAppear(){
+      console.log(`flag's state before setting state ${this.state.photoAppear}`);
       this.setState({photoAppear: !this.state.photoAppear});
-      console.log(this.state.photoAppear);
+      console.log(`flag's state after setting state ${this.state.photoAppear}`);
   }
 
   //Next I need a series of functions that will update the list on clicking and stuff!
@@ -58,21 +60,18 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        <img src={this.state.imgList[this.state.index]} alt=""/> <br/>
-        <CSSTransitionGroup 
-          in={this.state.index}
-          appear={true}
-          timeout={1000}
-          classNames="fade"   
-          unmountOnExit
-          >
+          <img src={this.state.imgList[this.state.index]} alt=""/> <br/>
           <button onClick={this.toggleAppear}>APPEAR</button>
+          <CSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={5000}
+          transitionLeaveTimeout={3000}
+          >            
           <button onClick={this.backwardClick}>BACKWARD</button>
           <button onClick={this.forwardClick}>FORWARD</button>
         </CSSTransitionGroup>
-
-      </div>
-    )
+     </div>
+    );
   }
 }
 
