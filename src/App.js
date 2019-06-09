@@ -11,7 +11,7 @@ class App extends React.Component{
     //bind functions
     this.forwardClick = this.forwardClick.bind(this);
     this.backwardClick = this.backwardClick.bind(this);
-
+    this.toggleAppear = this.toggleAppear.bind(this);
 
     //to display the image, I am going to use an array, hack way :P
     const img0  = require('/home/anza95/Desktop/my_personal_project/src/hamza_papa.jpg');
@@ -22,8 +22,15 @@ class App extends React.Component{
     //the state for this component will be the array of images
     this.state = {
       index: 0, //this is the index for the array list
-      imgList: [img0, img1, img2, img3] //this as I mentioned above is the array for the images
+      imgList: [img0, img1, img2, img3], //this as I mentioned above is the array for the images
+      photoAppear: false
     }
+  }
+
+  //In order to perform transitions, I  need a toggle function
+  toggleAppear(){
+      this.setState({photoAppear: !this.state.photoAppear});
+      console.log(this.state.photoAppear);
   }
 
   //Next I need a series of functions that will update the list on clicking and stuff!
@@ -52,8 +59,17 @@ class App extends React.Component{
     return(
       <div>
         <img src={this.state.imgList[this.state.index]} alt=""/> <br/>
-        <button onClick={this.backwardClick}>BACKWARD</button>
-        <button onClick={this.forwardClick}>FORWARD</button>
+        <CSSTransitionGroup 
+          in={this.state.index}
+          appear={true}
+          timeout={1000}
+          classNames="fade"   
+          unmountOnExit
+          >
+          <button onClick={this.toggleAppear}>APPEAR</button>
+          <button onClick={this.backwardClick}>BACKWARD</button>
+          <button onClick={this.forwardClick}>FORWARD</button>
+        </CSSTransitionGroup>
 
       </div>
     )
